@@ -6,10 +6,10 @@ app.controller('adminController', function($scope,$http){
     	url : 'adminlogin',
     	data : $scope.admin
     }).then(function success(response){
-      alert('login success');
-      window.location.href = '';
+      //alert('login success');
+      window.location.href = '/admindashboard';
     }, function error(response){
-      alert('Invalid Credentials')
+      alert('Invalid Credentials');
     })
   }
 });
