@@ -4,7 +4,7 @@ var monk = require('monk');
 var db = monk('localhost:27017/campushire');
 var admin = db.get('admin');
 var students = db.get('students');
-
+var education = db.get('education');
 /* GET home page. */
 router.get('/', function(req, res) {
   res.render('index');
@@ -29,6 +29,9 @@ router.get('/stu_up', function(req, res) {
 });
 router.get('/stu_home', function(req, res) {
   res.render('stu_home')
+});
+router.get('/stu_dash', function(req, res) {
+  res.render('stu_dash')
 });
 router.get('/forgot', function(req, res) {
   res.render('forget')
@@ -71,6 +74,17 @@ router.post('/studentindata', function(req, res) {
       res.sendStatus(200);
     }
   });
+});
+// Education Data
+router.post('/educationData', function(req, res) {
+  education.insert(req.body, function(err,docs){
+    if(err){
+      res.sendStatus(500);
+    }
+    else{
+      res.sendStatus(200);
+    }
+  })
 });
 module.exports = router;
 
