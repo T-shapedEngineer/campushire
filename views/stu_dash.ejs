@@ -224,37 +224,96 @@
                   <form class="form-group">
                     <h1>Education Details</h1>
                       <label for="text">10th(secondary)</label>
-                      <input type="text" class="form-control" id="name" placeholder="Board/university" ng-model="education.name">
+                      <input type="text" class="form-control" placeholder="Board/university" ng-model="education.secondary">
                       <label for="number">Year</label>
-                      <input type="year" class="form-control" id="year" placeholder="Year" ng-model="education.year">
+                      <input type="year" class="form-control" placeholder="Year" ng-model="education.secondaryyear">
                       <label for="text">Percentage</label>
-                      <input type="number" class="form-control" id="Percentage" placeholder="Percentage"  ng-model="education.Percentage">
+                      <input type="number" class="form-control" placeholder="Percentage"  ng-model="education.secondarypercentage">
                       <label for="text">Cgpa</label>
-                      <input type="number" class="form-control" id="Cgpa" placeholder="cgpa"  ng-model="education.Cgpa">
+                      <input type="number" class="form-control" placeholder="cgpa"  ng-model="education.secondarycgpa">
                       <label for="text">12th(senior secondary)</label>
-                      <input type="text" class="form-control" id="name" placeholder="Board/university" ng-model="education.name">
+                      <input type="text" class="form-control" placeholder="Board/university" ng-model="education.seniorsecondary">
                       <label for="number">Year</label>
-                      <input type="year" class="form-control" id="year" placeholder="Year" ng-model="education.year">
+                      <input type="year" class="form-control" placeholder="Year" ng-model="education.senioryear">
                       <label for="text">Percentage</label>
-                      <input type="number" class="form-control" id="Percentage" placeholder="Percentage"  ng-model="education.Percentage">
+                      <input type="number" class="form-control" placeholder="Percentage"  ng-model="education.seniorpercentage">
                       <label for="text">Cgpa</label>
-                      <input type="number" class="form-control" id="Cgpa" placeholder="cgpa"  ng-model="education.Cgpa">
+                      <input type="number" class="form-control" placeholder="cgpa"  ng-model="education.seniorcgpa">
                       <label for="text">Graduation</label>
-                      <input type="text" class="form-control" id="name" placeholder="Board/university" ng-model="education.name">
+                      <input type="text" class="form-control" placeholder="Board/university" ng-model="education.graduation">
                       <label for="number">Year</label>
-                      <input type="year" class="form-control" id="year" placeholder="Year" ng-model="education.year">
+                      <input type="year" class="form-control" placeholder="Year" ng-model="education.graduationyear">
                       <label for="text">Percentage</label>
-                      <input type="number" class="form-control" id="Percentage" placeholder="Percentage"  ng-model="education.Percentage">
+                      <input type="number" class="form-control" id="Percentage" placeholder="Percentage"  ng-model="education.graduationercentage">
                       <label for="text">Cgpa</label>
-                      <input type="number" class="form-control" id="Cgpa" placeholder="cgpa"  ng-model="education.Cgpa">
+                      <input type="number" class="form-control" placeholder="cgpa"  ng-model="education.graduationcgpa">
                       <label for="text-area">Other Acheivements/Certifications/Qualification</label>
-                      <input type="text" class="form-control" id="name"  ng-model="education.name">
+                      <input type="text" class="form-control" ng-model="education.others">
                       <br>
-                      <button type="Submit" class="btn btn-info" ng-click="studentData(education)">Submit</button>
+                      <button class="btn btn-info" ng-click="studentData(education)">Submit</button>
               </form>
               </div>
               </div>
-              <div class="tab-pane fade align" id="manage">
+              <div class="tab-pane fade align" id="manage" ng-controller="editstudentController" ng-init="getData()">
+                <div class="container col-md-10 col-md-offset-1 table-responsive">
+                  <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                      <tr>
+                        <th>10th(secondary)</th>
+                        <th>Year</th>
+                        <th>Percentage</th>
+                        <th>Cgpa</th>
+                        <th>12th(senior secondary)</th>
+                        <th>Year</th>
+                        <th>Percentage</th>
+                        <th>Cgpa</th>
+                        <th>Graduation</th>
+                        <th>Year</th>
+                        <th>Percentage</th>
+                        <th>Cgpa</th>
+                        <th>Other Acheivements</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="education in educations">
+                        <td><span ng-hide="editEducation">{{education.secondary}}</span><input ng-show="editEducation" type="text" ng-model="education.secondary">
+                        </td>
+                        <td>
+                          <span ng-hide="editEducation">{{education.secondaryyear}}</span>
+                          <input ng-show="editEducation" type="text" ng-model="education.secondaryyear">
+                        </td>
+                        <td><span ng-hide="editEducation">{{education.secondarypercentage}}</span>
+                        <input ng-show="editEducation" type="text" ng-model="education.secondarypercentage"></td>
+                        <td><span ng-hide="editEducation">{{education.secondarycgpa}}</span>
+                        <input ng-show="editEducation" type="text" ng-model="education.secondarycgpa"></td>
+                        <td><span ng-hide="editEducation">{{education.seniorsecondary}}</span>
+                        <input ng-show="editEducation" type="text" ng-model="education.seniorsecondary"></td>
+                        <td><span ng-hide="editEducation">{{education.senioryear}}</span>
+                        <input ng-show="editEducation" type="text" ng-model="education.senioryear"></td>
+                        <td><span ng-hide="editEducation">{{education.seniorpercentage}}</span>
+                        <input ng-show="editEducation" type="text" ng-model="education.seniorpercentage"></td>
+                        <td><span ng-hide="editEducation">{{education.seniorcgpa}}</span>
+                        <input ng-show="editEducation" type="text" ng-model="education.seniorcgpa"></td>
+                        <td><span ng-hide="editEducation">{{education.graduation}}</span>
+                        <input ng-show="editEducation" type="text" ng-model="education.graduation"></td>
+                        <td><span ng-hide="editEducation">{{education.graduationyear}}</span>
+                        <input ng-show="editEducation" type="text" ng-model="education.graduationyear"></td>
+                        <td><span ng-hide="editEducation">{{education.graduationercentage}}</span>
+                        <input ng-show="editEducation" type="text" ng-model="education.graduationercentage"></td>
+                        <td><span ng-hide="editEducation">{{education.graduationcgpa}}</span>
+                        <input ng-show="editEducation" type="text" ng-model="education.graduationcgpa"></td>
+                        <td><span ng-hide="editEducation">{{education.others}}</span>
+                        <input ng-show="editEducation" type="text" ng-model="education.others"></td>
+                        <td style="white-space:nowrap">
+                          <i class="fa fa-edit btn btn-warning" ng-hide="editEducation" ng-click="editEducation=true"></i>
+                          <i class="fa fa-save btn btn-primary" ng-show="editEducation" ng-click="updateEducation(education);editEducation=false"></i>
+                          <i class="fa fa-trash btn btn-danger" ng-click="removeEducation(education)"></i>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
               <div class="tab-pane fade align" id="vacancy">
               </div>

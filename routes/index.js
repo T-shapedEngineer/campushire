@@ -86,6 +86,40 @@ router.post('/educationData', function(req, res) {
     }
   })
 });
+//find education
+router.get('/geteducationData', function(req, res) {
+  education.find({},function(err,docs){
+    if(err){
+      res.sendStatus(500);
+    }
+    else{
+      console.log(docs);
+      res.send(docs);
+    }
+  })
+});
+//Update Education Data
+router.put('/updateeducationData/:id', function(req, res) {
+  education.update({"_id":req.params.id},{$set:req.body} ,function(err,docs){
+    if(err){
+      res.sendStatus(500);
+    }
+    else{
+      res.sendStatus(200);
+    }
+  })
+});
+//Remove Education Data
+router.delete('/removeeducationData/:id', function(req, res) {
+  education.remove({"_id":req.params.id}, function(err,docs){
+    if(err){
+      res.sendStatus(500);
+    }
+    else{
+      res.sendStatus(200);
+    }
+  })
+});
 module.exports = router;
 
 
