@@ -4,46 +4,44 @@
 	<meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Registration Form</title>
-<link href="stylesheets/com_up.css" rel="stylesheet" type="text/css">
+  <link href="stylesheets/com_up.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="angularjs/angular.min.js"></script>
+  <script type="text/javascript" src="angularjs/companyup.js"></script>
 </head>
-<body>
-      
-
-<div class="wrapper">
-  
-  
+<body ng-app="CompanyApp">
+<div class="wrapper" ng-controller="CompanyController">
     <div class="form">
       <div>
       <h1>Company Sign up Form</h1>
     </div>
        <div class="inputfield">
           <label>First Name</label>
-          <input type="text" class="input">
+          <input type="text" class="input" ng-model="company.fname">
        </div>  
         <div class="inputfield">
           <label>Last Name</label>
-          <input type="text" class="input">
+          <input type="text" class="input" ng-model="company.lname">
        </div> 
        <div class="inputfield">
           <label>Company name</label>
-          <input type="text" class="input">
+          <input type="text" class="input" ng-model="company.name">
        </div> 
        <div class="inputfield">
           <label>Email Address</label>
-          <input type="email" class="input">
+          <input type="email" class="input" ng-model="company.Email">
        </div>  
        <div class="inputfield">
           <label>Password</label>
-          <input type="password" class="input">
+          <input type="password" class="input" ng-model="company.password">
        </div>  
       <div class="inputfield">
           <label>Confirm Password</label>
-          <input type="password" class="input">
+          <input type="password" class="input" ng-model="company.cpassword">
        </div> 
         <div class="inputfield">
           <label>Gender</label>
           <div class="custom_select">
-            <select>
+            <select ng-model="company.gender">
               <option value="">Select</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
@@ -53,7 +51,7 @@
        </div> 
       <div class="inputfield">
           <label>Phone Number</label>
-          <input type="text" class="input">
+          <input type="text" class="input" ng-model="company.mobile">
        </div> 
        
       <div class="inputfield terms">
@@ -64,9 +62,9 @@
           <p>Agreed to terms and conditions</p>
        </div> 
       <div class="inputfield">
-        <input type="submit" value="Signup" class="btn">
+        <button class="btn" ng-click="companyData(company)">Signup</button>
       </div>
-      <p style="color:black"> Already have an account? <a href="#">Sign in</a><br><br>
+      <p style="color:black"> Already have an account? <a href="/com_login">Sign in</a><br><br>
 
        <a href="#" style="color:blue">Back to home!</a>
 
