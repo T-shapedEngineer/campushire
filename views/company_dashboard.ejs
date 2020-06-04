@@ -153,7 +153,7 @@
           <li class="active"><a data-toggle="tab" href="#dashboard"><i class="fa fa-address-card"></i><span>Dashboard</span></a></li>
           <li class="sub-menu"><a data-toggle="tab" href="#vacancy"><i class="fa fa-bars"></i><span>Add Vacancy</span></a></li>
           <li class="sub-menu"><a data-toggle="tab" href="#manage"><i class="fa fa-bars"></i><span>Manage Vacancy</span></a></li>
-          <li class="sub-menu"><a data-toggle="tab" href="#"><i class="fa fa-bars"></i><span>New Job Applications </span></a></li>
+          <li class="sub-menu"><a data-toggle="tab" href="#newapplications"><i class="fa fa-bars"></i><span>New Job Applications </span></a></li>
           <li class="sub-menu"><a data-toggle="tab" href="#applied"><i class="fa fa-search"></i><span>Sorted List </span></a></li>
           <li class="sub-menu"><a data-toggle="tab" href="#reports"><i class="fa fa-search"></i><span>Rejected List </span></a></li>
           <li class="sub-menu"><a data-toggle="tab" href="#search"><i class="fa fa-search"></i><span>Reports </span></a></li>
@@ -249,18 +249,96 @@
                   </div>
                 </div>
               </div>
+              <div class="tab-pane fade align" id="manage" ng-controller="managecontroller">
+                <h1>Manage Vacancy</h1>
+                <div>
+                  <div>
+                    <label> Show </label>
+                    <select name="" id="">
+                      <option value=""> 1 </option>
+                      <option value="">2 </option>
+                      <option value="">3 </option>
+                      <option value="">10 </option>
+                    </select>
+                    <div class="topnav">
+                      <div class="search-container">
+                        <input type="text" placeholder="Search.." name="search" style="float:right; padding:10px;font-size:20px">
+                      </div><br>
+                      <br><br>
+                      <h3>Vacacy reports from 2020-05-01 to 2020-06-29</h3>
+                      <table class="table table-bordered table-striped table-hover">
+                        <tr>
+                          <th>S.NO</th>
+                          <th>Job Title</th>
+                          <th>Job Posting date</th>
+                          <th>Action</th>
+                        </tr>
+                        <tr ng-repeat="vacancy in vacancyData">
+                          <td>
+                            <span>{{$index + 1}}</span>
+                          </td>
+                          <td>
+                            <span ng-hide="vacancyEdit">{{vacancy.title}}</span>
+                            <input ng-show="vacancyEdit" type="text" ng-model="vacancy.title">
+                          </td>
+                          <td>
+                            <span ng-hide="vacancyEdit">{{vacancy.date | date}}</span>
+                            <input ng-show="vacancyEdit" type="date" ng-model="vacancy.date">
+                          </td>
+                          <td>
+                            <i class="btn btn-warning fa fa-edit" ng-hide="vacancyEdit" ng-click="vacancyEdit=true"></i>
+                            <i class="btn btn-primary fa fa-save" ng-show="vacancyEdit" ng-click="vacancyEdit=false;EditVacancy(vacancy)"></i>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade align" id="newapplications">
+                <h1>New Applications</h1>
+                  <div>
+                    <label> Show </label>
+                    <select name="" id="">
+                      <option value=""> 10 </option>
+                      <option value="">9 </option>
+                      <option value="">8</option>
+                      <option value="">7 </option>
+                    </select>
+                    <div class="topnav">
+                      <div class="search-container">
+                        <input type="text" placeholder="Search.." name="search" style="float:right; padding:10px;font-size:20px">
+                      </div><br>
+                      <table class="table table-bordered table-striped table-hover">
+                        <tr>
+                          <th>S.NO</th>
+                          <th>Job Title</th>
+                          <th>Job Posting date</th>
+                          <th>Job Applied by</th>
+                          <th>Action</th>
+                        </tr>
+                        <tr>
+                          <td>1</td>
+                          <td>Web developer</td>
+                          <td>2020 23/06 9:00</td>
+                          <td>pooja</td>
+                          <td><a href="Applyjob.html">View Details</a></td>
+                        </tr>
+                      </table>
+                    </div>
+              </div>
             </div>
-        </section>
-      </section>
-    </section>
-  </body>
-  <script src="javascripts/jquery.js"></script>
-  <script src="javascripts/bootstrap.min.js"></script>
-  <script src="javascripts/jquery-ui-1.9.2.custom.min.js"></script>
-  <script src="javascripts/jquery.ui.touch-punch.min.js"></script>
-  <script src="javascripts/jquery.dcjqaccordion.2.7.js"></script>
-  <script src="javascripts/jquery.scrollTo.min.js"></script>
-  <script src="javascripts/jquery.nicescroll.js"></script>
-  <!-- common script for all pages-->
-  <script src="javascripts/common-scripts.js"></script>
-</html>
+              </section>
+            </section>
+          </section>
+        </body>
+        <script src="javascripts/jquery.js"></script>
+        <script src="javascripts/bootstrap.min.js"></script>
+        <script src="javascripts/jquery-ui-1.9.2.custom.min.js"></script>
+        <script src="javascripts/jquery.ui.touch-punch.min.js"></script>
+        <script src="javascripts/jquery.dcjqaccordion.2.7.js"></script>
+        <script src="javascripts/jquery.scrollTo.min.js"></script>
+        <script src="javascripts/jquery.nicescroll.js"></script>
+        <!-- common script for all pages-->
+        <script src="javascripts/common-scripts.js"></script>
+        </html>

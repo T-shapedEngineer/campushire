@@ -12,3 +12,25 @@ app.controller('vacancyController', function($scope,$http){
   	})
   }
 });
+app.controller('managecontroller', function($scope,$http){
+  $http({
+      method : 'GET',
+      url : '/getVacancyData',
+    }).then(function success(response){
+      console.log(response.data)
+      $scope.vacancyData=response.data
+    }, function error(response){
+      alert('Error');
+    })
+  $scope.EditVacancy = function(vacancy){
+    $http({
+      method : 'PUT',
+      url : 'updateVacancyData/'+vacancy._id,
+      data : vacancy
+    }).then(function success(response){
+      alert('Updated Successfully');
+    }, function error(response){
+      alert('Error');
+    })
+  }
+  });

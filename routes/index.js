@@ -173,6 +173,71 @@ router.post('/postVacancyData', function(req, res) {
     }
   })
 });
+router.get('/getVacancyData',function(req,res){
+  // var todaydate = moment().format('DD-MM-YYYY')
+  vacancy.find({},function(err,docs){
+    if(err){
+      res.sendStatus(500);
+    }
+    else{
+      res.send(docs);
+    }
+  })
+})
+router.put('/updateVacancyData/:id',function(req,res){
+  var data = {
+    title : req.body.title,
+    date : moment(req.body.date).format('DD-MM-YYYY')
+  }
+  vacancy.update({"_id":req.params.id},{$set:data},function(err,docs){
+    if(err){
+      res.sendStatus(500);
+    }
+    else{
+      res.send(docs);
+    }
+  })
+})
+//admin student
+router.get('/getstudentdata', function(req, res) {
+  
+  students.find({}, function(err,docs){
+    if(err){
+      res.sendStatus(500);
+    }
+    else{
+      console.log(docs)
+      // res.sendStatus(200);
+      res.send(docs)
+    }
+  })
+});
+
+router.post('/removestudentdata', function(req, res) {
+  
+  students.remove({"_id":req.body._id}, function(err,docs){
+    if(err){
+      res.sendStatus(500);
+    }
+    else{
+      // console.log(docs)
+      // res.sendStatus(200);
+      res.send(docs)
+    }
+  })
+});
+
+router.post('/updatestudentdata', function(req, res) {
+  
+  students.update({"_id":req.body._id},{$set:{'fname':req.body.fname,'email':req.body.email,'phoneno':req.body.phoneno}}, function(err,docs){
+    if(err){
+      res.sendStatus(500);
+    }
+    else{
+      // console.log(docs)
+      // res.sendStatus(200);
+      res.send(docs)
+    }
+  })
+});
 module.exports = router;
-
-
